@@ -1,7 +1,32 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 
+//행렬의 다양한 복사 방법 예제
+void MatOp2() {
+	cv::Mat img1 = cv::imread("lenna.bmp");
+
+	cv::Mat img2 = img1;
+	cv::Mat img3;
+	img3 = img1;
+
+	cv::Mat img4 = img1.clone();
+	cv::Mat img5;
+	img1.copyTo(img5);
+
+	img1.setTo(cv::Scalar(0, 255, 255)); //Yellow
+
+	cv::imshow("img1", img1);
+	cv::imshow("img2", img2);
+	cv::imshow("img3", img3);
+	cv::imshow("img4", img4);
+	cv::imshow("img5", img5);
+
+	cv::waitKey();
+	cv::destroyAllWindows();
+}
+
 int main() {
+	int i;
 	cv::Mat img2(480, 640, CV_8UC1); //unsigned char, 1-channel(그레이스케일)
 	cv::Mat img3(480, 640, CV_8UC3); //unsigned char, 3-channels(트루컬러)
 	cv::Mat img4(cv::Size(640, 480), CV_8UC3); //Size를 이용한 행렬 크기 설정.
@@ -23,5 +48,7 @@ int main() {
 	std::cout << "배열을 3x2 행렬이 참조 \n" << mat4 << std::endl;
 
 	cv::Mat mat5 = (cv::Mat_<float>(2, 3) << 1, 2, 3, 4, 5, 6); // << 연산자를 이용한 행렬 초기화
-	cv::Mat mat6 = cv::Mat_<float>({ 2,3 }, { 1,2,3,4,5,6 }); //c++11 의 초기화 리스트를 이용한 행렬 초기화
+	cv::Mat mat6 = cv::Mat_<float>({ 2,3 }, { 1,2,3,4,5,6 }); //c++11 의 초기화 리스트를 이용한 행렬 초기화	
+
+	MatOp2();
 }
