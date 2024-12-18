@@ -1,27 +1,27 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 
-int main() {	
-	cv::Mat img2(480, 640, CV_8UC1); //unsigned char, 1-channel(±×·¹ÀÌ½ºÄÉÀÏ)
-	cv::Mat img3(480, 640, CV_8UC3); //unsigned char, 3-channels(Æ®·çÄÃ·¯)
-	cv::Mat img4(cv::Size(640, 480), CV_8UC3); //Size¸¦ ÀÌ¿ëÇÑ Çà·Ä Å©±â ¼³Á¤.
+int main() {
+	cv::Mat img2(480, 640, CV_8UC1); //unsigned char, 1-channel(ê·¸ë ˆì´ìŠ¤ì¼€ì¼)
+	cv::Mat img3(480, 640, CV_8UC3); //unsigned char, 3-channels(íŠ¸ë£¨ì»¬ëŸ¬)
+	cv::Mat img4(cv::Size(640, 480), CV_8UC3); //Sizeë¥¼ ì´ìš©í•œ í–‰ë ¬ í¬ê¸° ì„¤ì •.
 
-	cv::Mat	img5(480, 640, CV_8UC1, cv::Scalar(128)); //Çà·ÄÀÇ ÃÊ±â°ª ¼³Á¤
-	cv::Mat img6(460, 640, CV_8UC3, cv::Scalar(0, 0, 255)); 
+	cv::Mat	img5(480, 640, CV_8UC1, cv::Scalar(128)); //í–‰ë ¬ì˜ ì´ˆê¸°ê°’ ì„¤ì •
+	cv::Mat img6(460, 640, CV_8UC3, cv::Scalar(0, 0, 255));
 
-	cv::Mat mat1 = cv::Mat::zeros(3, 3, CV_32SC1); //0À¸·Î ÃÊ±âÈ­ ÇÑ 3x3 Çà·Ä Á¤ÀÇ
-	std::cout << "0À¸·Î ÃÊ±âÈ­ ÇÑ Çà·Ä \n" << mat1 << std::endl;
+	cv::Mat mat1 = cv::Mat::zeros(3, 3, CV_32SC1); //0ìœ¼ë¡œ ì´ˆê¸°í™” í•œ 3x3 í–‰ë ¬ ì •ì˜
+	std::cout << "0ìœ¼ë¡œ ì´ˆê¸°í™” í•œ í–‰ë ¬ \n" << mat1 << std::endl;
 
-	cv::Mat mat2 = cv::Mat::ones(3, 3, CV_32FC1); //1·Î ÃÊ±âÈ­ ÇÑ 3x3 Çà·Ä Á¤ÀÇ
-	std::cout << "1·Î ÃÊ±âÈ­ ÇÑ Çà·Ä \n" << mat2 << std::endl;
+	cv::Mat mat2 = cv::Mat::ones(3, 3, CV_32FC1); //1ë¡œ ì´ˆê¸°í™” í•œ 3x3 í–‰ë ¬ ì •ì˜
+	std::cout << "1ë¡œ ì´ˆê¸°í™” í•œ í–‰ë ¬ \n" << mat2 << std::endl;
 
-	cv::Mat mat3 = cv::Mat::eye(3, 3, CV_32FC1); // 3x3 ´ÜÀ§Çà·Ä Á¤ÀÇ
-	std::cout << "3x3 ´ÜÀ§Çà·Ä \n" << mat3 << std::endl;
+	cv::Mat mat3 = cv::Mat::eye(3, 3, CV_32FC1); // 3x3 ë‹¨ìœ„í–‰ë ¬ ì •ì˜
+	std::cout << "3x3 ë‹¨ìœ„í–‰ë ¬ \n" << mat3 << std::endl;
 
 	float data[] = { 1,2,3,4,5,6 };
-	cv::Mat mat4(2, 3, CV_32FC1, data); //ÀÏ¹İ float ¹è¿­À» ÂüÁ¶ÇÏ¿© 2x3 Çà·Ä Á¤ÀÇ
-	std::cout << "¹è¿­À» 3x2 Çà·ÄÀÌ ÂüÁ¶ \n" << mat4 << std::endl;
+	cv::Mat mat4(2, 3, CV_32FC1, data); //ì¼ë°˜ float ë°°ì—´ì„ ì°¸ì¡°í•˜ì—¬ 2x3 í–‰ë ¬ ì •ì˜
+	std::cout << "ë°°ì—´ì„ 3x2 í–‰ë ¬ì´ ì°¸ì¡° \n" << mat4 << std::endl;
 
-	cv::Mat mat5 = (cv::Mat_<float>(2, 3) << 1, 2, 3, 4, 5, 6); // << ¿¬»êÀÚ¸¦ ÀÌ¿ëÇÑ Çà·Ä ÃÊ±âÈ­
-	cv::Mat mat6 = cv::Mat_<float>({ 2,3 }, { 1,2,3,4,5,6 }); //c++11 ÀÇ ÃÊ±âÈ­ ¸®½ºÆ®¸¦ ÀÌ¿ëÇÑ Çà·Ä ÃÊ±âÈ­
+	cv::Mat mat5 = (cv::Mat_<float>(2, 3) << 1, 2, 3, 4, 5, 6); // << ì—°ì‚°ìë¥¼ ì´ìš©í•œ í–‰ë ¬ ì´ˆê¸°í™”
+	cv::Mat mat6 = cv::Mat_<float>({ 2,3 }, { 1,2,3,4,5,6 }); //c++11 ì˜ ì´ˆê¸°í™” ë¦¬ìŠ¤íŠ¸ë¥¼ ì´ìš©í•œ í–‰ë ¬ ì´ˆê¸°í™”
 }
